@@ -1,11 +1,20 @@
-import React from "react";
 
-function TaskList() {
-  return (
-    <div className="tasks">
-      {/* display a list of tasks using Task component */}
-    </div>
-  );
+import Task from "./Task";
+
+function TaskList({tasks, deleteTask}) {
+
+  const taskCard = tasks.map((task) => {
+    return (
+      <Task
+        key={task.text}
+        category={task.category}
+        text={task.text}
+        deleteTask={() => deleteTask(task)}
+      />
+    );
+  });
+
+  return <div className="tasks">{taskCard}</div>;
 }
 
 export default TaskList;
